@@ -1,0 +1,37 @@
+{
+  "name": "v2-blog-verse",
+  "version": "1.0.0",
+  "description": "Simple blogging web app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riyanhossain/v2-blog-verse.git"
+  },
+  "author": "riyan hossain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/riyanhossain/v2-blog-verse/issues"
+  },
+  "homepage": "https://github.com/riyanhossain/v2-blog-verse#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.3",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.7.7"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.2",
+    "nodemon": "^2.0.19"
+  }
+}
