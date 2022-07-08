@@ -3,6 +3,8 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const { notFound , errorHandler } = require('./middlewares/defaultErrorMiddlewares');
 const dbConnection = require('./db/dbconnect');
+const userHandler = require('./routes/user');
+const blogHandler = require('./routes/blog');
 
 
 const app = express();
@@ -22,7 +24,8 @@ app.use(express.static('public'));
 
 
 //routes
-
+app.use('/api/v1/users', userHandler);
+app.use('/api/v1/blogs', blogHandler);
 
 
 app.get('/', (req, res) => {

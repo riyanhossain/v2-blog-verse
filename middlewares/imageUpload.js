@@ -3,7 +3,7 @@ const path = require("path");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './public/uploads');
+    cb(null, './public/cover_images');
   },
   filename: (req, file, cb) => {
     const fileExt = path.extname(file.originalname);
@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
 const uploadImage = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
-    if (file.fieldname === "pImage") {
+    if (file.fieldname === "coverImage") {
       if (
         file.mimetype === "image/png" ||
         file.mimetype === "image/jpg" ||
