@@ -33,6 +33,10 @@ const blogSchema = new mongoose.Schema(
     imageName: {
         type: String,
         required: true,
+    },
+    category: {
+        type: String,
+        required: true,
     }
   },
   {

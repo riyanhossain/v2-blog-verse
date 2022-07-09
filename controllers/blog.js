@@ -8,7 +8,7 @@ const createBlog = async (req, res) => {
         req.body.imageName= req.file.filename;
         const blog = await blogModel.create({
             ...req.body,
-            // user: req.user._id,
+            user: req.user.id,
         });
         res.status(200).json({
             message: "Blog created",
@@ -37,7 +37,13 @@ const deleteBlog = async (req, res) => {
 }
 
 const updateBlog = async (req, res) => {
+    const newUrl = new URL(`${req.protocol}://${req.get("host")}`);
     try {
+        if(req.file){
+
+            req.body.coverImage = newUrl.origin + "/cover_images/" + req.file.filename;
+            req.body.imageName= req.file.filename;
+        }
         const blog = await blogModel.findByIdAndUpdate(req.params.id, {
             ...req.body,
         });
@@ -55,7 +61,20 @@ const updateBlog = async (req, res) => {
     }
 }
 
+const getAllBlogs = async (req, res) => {
+    try {
+        const blogs = await blogModel.find({draft: false}).populate('comments', 'userName content').populate('user', 'name');
+        res.status(200).json({
+            message: "Blogs fetched",
+            blogs,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+}
 module.exports = {
     createBlog,
-    deleteBlog
+    deleteBlog,
+    updateBlog,
+    getAllBlogs
 }

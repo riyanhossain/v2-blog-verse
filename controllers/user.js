@@ -2,6 +2,7 @@ const userModel = require("../models/user");
 const otpGenerator = require("otp-generator");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
+const { generateJwtToken } = require("../utils/genarateJwtToken");
 
 const userRegister = async (req, res, next) => {
   try {
@@ -100,9 +101,11 @@ const userLogin = async (req, res) => {
         const user = await userModel.findOne({ email });
         if (user) {
         const isMatch = await bcrypt.compare(password, user.password);
+        const token = generateJwtToken(user);
         if (isMatch) {
             res.status(200).json({
             message: "Login successful",
+            access_token: token,
             });
         } else {
             res.status(200).json({

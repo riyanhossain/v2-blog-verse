@@ -1,10 +1,15 @@
 const express = require('express');
-const { createBlog, deleteBlog } = require('../controllers/blog');
+const { createBlog, deleteBlog, updateBlog, getAllBlogs } = require('../controllers/blog');
 const uploadImage = require('../middlewares/imageUpload');
+const { verifyJwtToken } = require('../middlewares/verifyJwtToken');
 const router = express.Router();
 
-router.post('/create-blog', uploadImage.single("coverImage"), createBlog);
+router.post('/create-blog', verifyJwtToken, uploadImage.single("coverImage"), createBlog);
 
-router.delete('/delete-blog/:id', deleteBlog);
+router.delete('/delete-blog/:id',verifyJwtToken, deleteBlog);
+
+router.patch('/update-blog/:id',verifyJwtToken, uploadImage.single("coverImage"), updateBlog);
+
+router.get('/get-blogs', getAllBlogs)
 
 module.exports = router;

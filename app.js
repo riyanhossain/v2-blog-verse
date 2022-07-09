@@ -5,6 +5,7 @@ const { notFound , errorHandler } = require('./middlewares/defaultErrorMiddlewar
 const dbConnection = require('./db/dbconnect');
 const userHandler = require('./routes/user');
 const blogHandler = require('./routes/blog');
+const commentHandler = require('./routes/comment');
 
 
 const app = express();
@@ -26,6 +27,7 @@ app.use(express.static('public'));
 //routes
 app.use('/api/v1/users', userHandler);
 app.use('/api/v1/blogs', blogHandler);
+app.use('/api/v1/comments', commentHandler);
 
 
 app.get('/', (req, res) => {
