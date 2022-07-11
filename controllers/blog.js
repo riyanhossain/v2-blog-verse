@@ -65,6 +65,8 @@ const getAllBlogs = async (req, res) => {
   try {
     const blogs = await blogModel
       .find({ draft: false })
+      .skip(req.query.skip*20)
+      .limit(20)
       .populate("comments", "userName content")
       .populate("user", "name");
     res.status(200).json({
