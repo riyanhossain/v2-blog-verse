@@ -65,6 +65,7 @@ const getAllBlogs = async (req, res) => {
   try {
     const blogs = await blogModel
       .find({ draft: false })
+      .sort({ createdAt: -1 })
       .skip(req.query.skip*20)
       .limit(20)
       .populate("user", "name");
@@ -99,6 +100,7 @@ const getBlogsByCategory = async (req, res) => {
         draft: false,
         category: req.params.category,
       })
+      .sort({ createdAt: -1 })
       .skip(req.query.skip*20)
       .limit(20)
       .populate("user", "name");
@@ -117,6 +119,7 @@ const getBlogsByUser = async (req, res) => {
       .find({
         user: req.params.user,
       })
+      .sort({ createdAt: -1 })
       .skip(req.query.skip*20)
       .limit(20)
     res.status(200).json({
@@ -138,6 +141,7 @@ const searchBlogs = async (req, res) => {
           { category: { $regex: req.query.search, $options: "i" } },
         ],
       })
+      .sort({ createdAt: -1 })
       .populate("comments", "userName content")
       .populate("user", "name");
     res.status(200).json({

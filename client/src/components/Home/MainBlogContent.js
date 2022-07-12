@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Blog from "./Blog";
 import axios from "axios";
 
@@ -12,7 +12,7 @@ export default function MainBlogContent() {
     fetchBlogs();
   }, [blogs]);
   return (
-    <div className="w-[40rem] min-h-screen flex flex-col justify-center  gap-y-4">
+    <div className="w-[40rem] flex flex-col justify-center gap-y-4">
       {blogs.map((blog, index) => {
         return <Blog key={index} blog={blog} />;
       })}

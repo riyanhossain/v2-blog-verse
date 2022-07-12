@@ -16,8 +16,8 @@ router.get('/search-blogs', searchBlogs);
 
 router.get('/blog/:id', getBlog);
 
-router.get('/blogs/:category', getBlogsByCategory);
+router.get('/:category', getBlogsByCategory);
 
-router.get('/blogs/:user',verifyJwtToken, getBlogsByUser);
+router.get('/:user',verifyJwtToken, getBlogsByUser);
 
 module.exports = router;

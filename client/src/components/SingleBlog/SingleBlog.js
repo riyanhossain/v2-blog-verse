@@ -11,25 +11,20 @@ export default function SingleBlog() {
   },[id]);
   useEffect(() => {
     fetchBlog();
-  }, [blog,id,fetchBlog]);
-  console.log(blog);
+  }, [fetchBlog]);
   return (
     <section className="flex justify-center items-center mt-2">
-      <div className="w-[1200px] flex justify-center items-start">
-        <div className="w-10/12 flex flex-col ">
+      <div className="w-[1200px] flex justify-center items-start bg-white shadow">
+        <div className="w-10/12 flex flex-col gap-y-6">
           <div className="w-full h-[30rem]">
             <img src={blog.coverImage} alt="" className="h-full w-full"/>
           </div>
           <div>
-            <h1>{blog.title}</h1>
-            <p>{blog.content}</p>
+            <h1 className="text-2xl font-SecularOne font-bold">{blog.title}</h1>
+            <p className="text-lg font-serif whitespace-pre-wrap">{blog.content}</p>
           </div>
           <div>
-            {
-              blog.comments && blog.comments.map((comment, index) => {
-                return <p key={index}>{comment.content}{comment.userName}</p>;
-              })
-            }
+            <h1>comments</h1>
           </div>
         </div>
       </div>
