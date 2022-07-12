@@ -67,7 +67,6 @@ const getAllBlogs = async (req, res) => {
       .find({ draft: false })
       .skip(req.query.skip*20)
       .limit(20)
-      .populate("comments", "userName content")
       .populate("user", "name");
     res.status(200).json({
       message: "Blogs fetched",
@@ -77,6 +76,57 @@ const getAllBlogs = async (req, res) => {
     console.log(err);
   }
 };
+
+const getBlog = async (req, res) => {
+  try {
+    const blog = await blogModel
+      .findById(req.params.id)
+      .populate("comments", "userName content")
+      .populate("user", "name");
+    res.status(200).json({
+      message: "Blog fetched",
+      blog,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+const getBlogsByCategory = async (req, res) => {
+  try {
+    const blogs = await blogModel
+      .find({
+        draft: false,
+        category: req.params.category,
+      })
+      .skip(req.query.skip*20)
+      .limit(20)
+      .populate("user", "name");
+    res.status(200).json({
+      message: "Blogs fetched",
+      blogs,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+const getBlogsByUser = async (req, res) => {
+  try {
+    const blogs = await blogModel
+      .find({
+        user: req.params.user,
+      })
+      .skip(req.query.skip*20)
+      .limit(20)
+    res.status(200).json({
+      message: "Blogs fetched",
+      blogs,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 const searchBlogs = async (req, res) => {
   try {
@@ -105,4 +155,7 @@ module.exports = {
   updateBlog,
   getAllBlogs,
   searchBlogs,
+  getBlog,
+  getBlogsByCategory,
+  getBlogsByUser,
 };

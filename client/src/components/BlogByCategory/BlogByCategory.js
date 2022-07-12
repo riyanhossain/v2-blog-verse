@@ -6,6 +6,10 @@ export default function BlogByCategory() {
     const { category } = useParams();
 
   return (
-    <div>{category}</div>
+    <section className='flex justify-center items-center mt-2'>
+        <div className='w-[1200px] flex justify-center items-start'>
+            <h1>{category}</h1>
+        </div>
+    </section>
   )
 }

@@ -1,5 +1,5 @@
 const express = require('express');
-const { createBlog, deleteBlog, updateBlog, getAllBlogs, searchBlogs } = require('../controllers/blog');
+const { createBlog, deleteBlog, updateBlog, getAllBlogs, searchBlogs, getBlogsByCategory, getBlog, getBlogsByUser } = require('../controllers/blog');
 const uploadImage = require('../middlewares/imageUpload');
 const { verifyJwtToken } = require('../middlewares/verifyJwtToken');
 const router = express.Router();
@@ -13,5 +13,11 @@ router.patch('/update-blog/:id',verifyJwtToken, uploadImage.single("coverImage")
 router.get('/get-blogs', getAllBlogs);
 
 router.get('/search-blogs', searchBlogs);
+
+router.get('/blog/:id', getBlog);
+
+router.get('/blogs/:category', getBlogsByCategory);
+
+router.get('/blogs/:user',verifyJwtToken, getBlogsByUser);
 
 module.exports = router;

@@ -6,6 +6,7 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import VerifyOTP from "./components/Register/VerifyOTP";
 import BlogByCategory from "./components/BlogByCategory/BlogByCategory";
+import SingleBlog from "./components/SingleBlog/SingleBlog";
 function App() {
   return (
     <div>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register" element={<Register/>} />
         <Route path="/verify-otp" element={<VerifyOTP/>} />
         <Route path="/category/:category" element={<BlogByCategory/>}/>
+        <Route path="/blog/:id" element={<SingleBlog/>}/>
       </Routes>
     </div>
   );

@@ -37,6 +37,10 @@ const blogSchema = new mongoose.Schema(
     category: {
         type: String,
         required: true,
+    },
+    readTime: {
+        type: Number,
+        required: true,
     }
   },
   {

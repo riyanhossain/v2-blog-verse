@@ -4,7 +4,12 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        kanit: ["Kanit", "sans-serif"],
+        SecularOne: ["Secular One", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 }
