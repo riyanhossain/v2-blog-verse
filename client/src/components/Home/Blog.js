@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import DeleteBlog from "../MyBlogs/DeleteBlog";
+import UpdateBlog from "../MyBlogs/UpdateBlog";
 
 export default function Blog(props) {
-  const { blog } = props;
+  const { blog, myblogs, token } = props;
   const { _id, title, category, createdAt, coverImage, readTime, user } = blog;
+  console.log(myblogs);
   return (
-    <div className="w-[40rem] h-[30rem] bg-white flex flex-col relative shadow-lg">
+    <div className="w-[40rem] h-[30rem] bg-white flex flex-col justify-center items-center relative shadow-lg">
       <div className="h-2/3 w-full flex justify-center items-center">
         <img src={coverImage} alt="" className="h-[85%] w-11/12" />
         <div className="flex absolute right-4 top-2 gap-x-2">
@@ -31,6 +34,14 @@ export default function Blog(props) {
 
         </div>
       </div>
+      {
+        myblogs && (
+          <div className="flex justify-center items-center w-11/12 gap-x-4">
+            <DeleteBlog id={_id} token={token}/>
+            <UpdateBlog/>
+          </div>
+        )
+      }
     </div>
   );
 }

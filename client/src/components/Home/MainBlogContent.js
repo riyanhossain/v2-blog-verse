@@ -10,7 +10,7 @@ export default function MainBlogContent() {
   };
   useEffect(() => {
     fetchBlogs();
-  }, [blogs]);
+  }, []);
   return (
     <div className="w-[40rem] flex flex-col justify-center gap-y-4">
       {blogs.map((blog, index) => {

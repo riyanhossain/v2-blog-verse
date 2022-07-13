@@ -18,7 +18,7 @@ export default function Categories() {
         return (
           <button
             key={index}
-            className="font-semibold text-black p-2 w-48 rounded bg-white border-2 hover:bg-blue-100 "
+            className="font-semibold text-black p-2 w-48 rounded bg-white border-2 hover:bg-blue-100 hover:text-emerald-400 hover:transition"
             onClick={() => navigate(`/category/${button}`)}
           >
             {button}

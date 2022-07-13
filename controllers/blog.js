@@ -117,11 +117,12 @@ const getBlogsByUser = async (req, res) => {
   try {
     const blogs = await blogModel
       .find({
-        user: req.params.user,
+        user: req.user.id,
       })
       .sort({ createdAt: -1 })
       .skip(req.query.skip*20)
       .limit(20)
+      .populate("user", "name");
     res.status(200).json({
       message: "Blogs fetched",
       blogs,

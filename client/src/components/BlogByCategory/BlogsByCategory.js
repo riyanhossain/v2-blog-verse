@@ -4,12 +4,11 @@ import { useParams } from 'react-router-dom';
 import Blog from '../Home/Blog';
 
 export default function BlogsByCategory() {
-        //useParams hook to get the category from the url
         const [blogList, setBlogList] = useState([]);
         const { category } = useParams();
         const fetchBlogByCategory = useCallback(
           async () => {
-            const res = await axios.get(`http://localhost:5000/api/v1/blogs/${category}`);
+            const res = await axios.get(`http://localhost:5000/api/v1/blogs/category/${category}`);
             setBlogList(res.data.blogs);
           },[category]
         )
