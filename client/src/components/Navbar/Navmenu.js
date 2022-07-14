@@ -10,7 +10,7 @@ export default function Navmenu(props) {
         <Menu
           items={[
             {
-              label: <Link to='/myblogs'>My Blogs</Link>,
+              label: <Link to='/private/myblogs'>My Blogs</Link>,
               key: "0",
             },
             {

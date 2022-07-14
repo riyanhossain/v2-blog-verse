@@ -14,7 +14,7 @@ export default function SingleBlog() {
   }, [fetchBlog]);
   return (
     <section className="flex justify-center items-center mt-2">
-      <div className="w-[1200px] flex justify-center items-start bg-white shadow">
+      <div className="w-blogbody flex justify-center items-start bg-white shadow">
         <div className="w-10/12 flex flex-col gap-y-6">
           <div className="w-full h-[30rem]">
             <img src={blog.coverImage} alt="" className="h-full w-full"/>

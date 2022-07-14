@@ -4,8 +4,8 @@ import { UserContex } from "../../App";
 import Blog from "../Home/Blog";
 
 export default function MyBlogs() {
-  const [state, dispatch] = useContext(UserContex);
-  const { user, token } = state;
+  const [state] = useContext(UserContex);
+  const { token } = state;
   const [blogList, setBlogList] = useState([]);
   const fetchMyBlogs = useCallback(async () => {
     const res = await axios.get(`http://localhost:5000/api/v1/blogs/myblogs`, {
@@ -17,13 +17,13 @@ export default function MyBlogs() {
   }, [token]);
   useEffect(() => {
     fetchMyBlogs();
-  }, [fetchMyBlogs]);
-  return     <div>            {
-    blogList.map((blog, index) => {
-        return <Blog key={index} blog={blog} myblogs={true} token={token} />
-    })
-}
-{
-    blogList.length === 0 && <h1>No blogs found</h1>
-}</div>;
+  }, [fetchMyBlogs, blogList]);
+  return (
+    <div className="w-[40rem] flex flex-col justify-center items-center gap-y-4">
+      {blogList.map((blog, index) => {
+        return <Blog key={index} blog={blog} myblogs={true} token={token} />;
+      })}
+      {blogList.length === 0 && <h1>No blogs found</h1>}
+    </div>
+  );
 }

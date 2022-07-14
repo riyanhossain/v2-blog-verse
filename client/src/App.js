@@ -13,6 +13,8 @@ import { reducer, initialState } from "./State/State";
 import { createContext, useReducer } from "react";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import MyBlogsLayout from "./components/MyBlogs/MyBlogsLayout";
+import UpdateBlog from "./components/UpdateBlog.js/UpdateBlog";
+import NotFoundPage from "./components/NotFound/NotFoundPage";
 export const UserContex = createContext();
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -24,15 +26,18 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/verify-otp" element={<VerifyOTP />} />
+          <Route path="/verify-otp/:email" element={<VerifyOTP />} />
           <Route path="/category/:category" element={<BlogByCategory />} />
           <Route path="/blog/:id" element={<SingleBlog />} />
           <Route path="/search/:search" element={<SearchBlogLayout />} />
-          <Route path="/*" element={<PrivateRoute />}>
+          <Route path="/private/*" element={<PrivateRoute />}>
             <Route path="create-blog" element={<CreateBlog />} />
             <Route path="myblogs" element={<MyBlogsLayout />} />
+            <Route path="edit-blog/:id" element={<UpdateBlog />} />
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
+
       </UserContex.Provider>
     </div>
   );

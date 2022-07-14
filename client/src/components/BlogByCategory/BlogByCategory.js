@@ -8,7 +8,7 @@ export default function BlogByCategory() {
 
   return (
     <section className='flex justify-center items-center mt-2'>
-        <div className='w-[1200px] flex justify-between items-start'>
+        <div className='w-blogbody flex justify-between items-start'>
           <Categories/>
           <BlogsByCategory/>
           <RandomBlogList/>

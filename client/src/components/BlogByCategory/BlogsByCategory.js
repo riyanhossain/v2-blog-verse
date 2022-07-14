@@ -16,7 +16,7 @@ export default function BlogsByCategory() {
           fetchBlogByCategory();
         },[fetchBlogByCategory]);
   return (
-    <div>            {
+    <div className="w-[40rem] flex flex-col justify-center items-center gap-y-4">            {
         blogList.map((blog, index) => {
             return <Blog key={index} blog={blog} />
         })

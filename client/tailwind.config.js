@@ -9,6 +9,9 @@ module.exports = {
         kanit: ["Kanit", "sans-serif"],
         SecularOne: ["Secular One", "sans-serif"],
       },
+      width: {
+        'blogbody': '75rem',
+      }
     },
   },
   plugins: [],

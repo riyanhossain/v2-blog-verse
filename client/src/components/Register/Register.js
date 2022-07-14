@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+  const navigate = useNavigate();
+  const [inputs , setInputs] = useState({});
+  const handleInputs = (e) => {
+    setInputs({...inputs, [e.target.name]: e.target.value});
+  }
+  const userRegister = async (e) => {
+    try{
+      const res = await axios.post("http://localhost:5000/api/v1/users/register", inputs);
+      if(res.data.message){
+        message.success(res.data.message);
+      }
+      navigate(`/verify-otp/${inputs.email}`);
+    }catch(err){
+      message.error(err.response.data.message);
+    }
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    userRegister();
+    
+  }
   return (
     <section
       className="flex justify-center items-center"
@@ -10,7 +34,7 @@ export default function Register() {
         <h1 className="text-3xl font-bold mb-4">Register</h1>
         <form
           className="flex flex-col justify-center items-center w-10/12 gap-y-8"
-          //   onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
         >
           <input
             type="text"
@@ -19,7 +43,7 @@ export default function Register() {
             autoComplete="name"
             required
             name="name"
-            // onChange={handleInputs}
+            onChange={handleInputs}
           />
           <input
             type="email"
@@ -27,7 +51,7 @@ export default function Register() {
             placeholder="email"
             className="w-full bg-[#F0F2F3] p-2"
             autoComplete="email"
-            // onChange={handleInputs}
+            onChange={handleInputs}
             required
           />
           <input
@@ -36,12 +60,12 @@ export default function Register() {
             placeholder="password"
             className="w-full bg-[#F0F2F3] p-2"
             autoComplete="password"
-            // onChange={handleInputs}
+            onChange={handleInputs}
             required
           />
           <input
             type="submit"
-            value="Login"
+            value="Register"
             className="w-full bg-[#029FAE] p-2 font-semibold text-white"
           />
         </form>

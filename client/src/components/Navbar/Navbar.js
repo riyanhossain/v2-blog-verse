@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <div className="flex justify-center items-center h-14 bg-white">
-      <div className="w-[1200px] flex justify-between items-center">
+      <div className="w-blogbody flex justify-between items-center">
         <div className="flex gap-x-4">
           <Link to="/" className="flex justify-center items-center">
             <h1 className="font-bold mb-0 text-black">BlogVerse</h1>
@@ -38,7 +38,7 @@ export default function Navbar() {
           ) : (
             <ul className="flex justify-center items-center mb-0">
               <li>
-              <Link to="/create-blog">
+              <Link to="/private/create-blog">
                 <button className="font-semibold p-2 w-32 rounded hover:bg-slate-100 ">
                   Create Blog
                 </button>

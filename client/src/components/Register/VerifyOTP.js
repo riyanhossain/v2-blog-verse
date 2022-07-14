@@ -1,7 +1,25 @@
+import axios from 'axios';
 import React from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
+import { message } from 'antd';
 
 export default function VerifyOTP() {
-    //useparams to get email address from url
+  const navigate = useNavigate();
+    const { emaill } = useParams();
+    const [otp, setOtp] = React.useState('');
+    const handleInputs = (e) => {
+        setOtp(e.target.value);
+    }
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        try{
+            await axios.post(`http://localhost:5000/api/v1/users/verify-otp`, {otp, emaill});
+            message.success('OTP verified successfully');
+            navigate(`/login`);
+        }catch(err){
+            message.error(err.response.data.message);
+        }
+    }
   return (
     <section
     className="flex justify-center items-center"
@@ -11,7 +29,7 @@ export default function VerifyOTP() {
       <h1 className="text-3xl font-bold mb-4">OTP</h1>
       <form
         className="flex flex-col justify-center items-center w-10/12 gap-y-8"
-        //   onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
       >
         <input
           type="text"
@@ -20,7 +38,7 @@ export default function VerifyOTP() {
           autoComplete="otp"
           required
           name="otp"
-          // onChange={handleInputs}
+          onChange={handleInputs}
         />
         <input
           type="submit"
