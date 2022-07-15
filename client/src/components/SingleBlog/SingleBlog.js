@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Comments from "../Comments/Comments";
 
 export default function SingleBlog() {
   const { id } = useParams();
@@ -11,9 +12,9 @@ export default function SingleBlog() {
   },[id]);
   useEffect(() => {
     fetchBlog();
-  }, [fetchBlog]);
+  }, [fetchBlog, blog, id]);
   return (
-    <section className="flex justify-center items-center mt-2">
+    <section className="flex justify-center items-center mt-2 p-4">
       <div className="w-blogbody flex justify-center items-start bg-white shadow">
         <div className="w-10/12 flex flex-col gap-y-6">
           <div className="w-full h-[30rem]">
@@ -23,8 +24,8 @@ export default function SingleBlog() {
             <h1 className="text-2xl font-SecularOne font-bold">{blog.title}</h1>
             <p className="text-lg font-serif whitespace-pre-wrap">{blog.content}</p>
           </div>
-          <div>
-            <h1>comments</h1>
+          <div className="w-full">
+            <Comments commentList = {blog.comments}/>
           </div>
         </div>
       </div>

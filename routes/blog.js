@@ -1,5 +1,5 @@
 const express = require('express');
-const { createBlog, deleteBlog, updateBlog, getAllBlogs, searchBlogs, getBlogsByCategory, getBlog, getBlogsByUser } = require('../controllers/blog');
+const { createBlog, deleteBlog, updateBlog, getAllBlogs, searchBlogs, getBlogsByCategory, getBlog, getBlogsByUser, getRandomBlogs } = require('../controllers/blog');
 const uploadImage = require('../middlewares/imageUpload');
 const { verifyJwtToken } = require('../middlewares/verifyJwtToken');
 const router = express.Router();

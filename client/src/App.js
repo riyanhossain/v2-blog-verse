@@ -37,7 +37,6 @@ function App() {
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-
       </UserContex.Provider>
     </div>
   );
