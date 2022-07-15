@@ -9,7 +9,7 @@ Simple blogging web app
 
 ### Server-Side
 make sure you are in the ```root``` directory.
-Create a ```.env``` file and set up like this and go to this link if you cant generate gmail app password for third party usage.
+Create a ```.env``` file and set up like below image and go to this link if you cant generate gmail app password for third party usage.
 
 LinK: <a href="https://www.youtube.com/watch?v=7UkAcIFrlGo&ab_channel=PCGUIDE4U">https://www.youtube.com/watch?v=7UkAcIFrlGo&ab_channel=PCGUIDE4U</a>
 
