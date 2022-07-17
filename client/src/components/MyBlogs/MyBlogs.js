@@ -8,7 +8,7 @@ export default function MyBlogs() {
   const { token } = state;
   const [blogList, setBlogList] = useState([]);
   const fetchMyBlogs = useCallback(async () => {
-    const res = await axios.get(`https://new-blog-verse.herokuapp.com/api/v1/blogs/myblogs`, {
+    const res = await axios.get(`/api/v1/blogs/myblogs`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

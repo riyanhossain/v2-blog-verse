@@ -24,7 +24,7 @@ export default function Comments(props) {
     };
     try{
       await axios
-      .post(`https://new-blog-verse.herokuapp.com/api/v1/comments/post-comment`, data);
+      .post(`/api/v1/comments/post-comment`, data);
       setComments({
         content: "",
       });

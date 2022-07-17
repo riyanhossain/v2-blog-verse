@@ -8,7 +8,7 @@ export default function BlogsBySearch() {
   const { search } = useParams();
   const fetchBlogBySearch = useCallback(async () => {
     const res = await axios.get(
-      `https://new-blog-verse.herokuapp.com/api/v1/blogs/search-blogs?search=${search}`
+      `/api/v1/blogs/search-blogs?search=${search}`
     );
     setBlogList(res.data.blogs);
   }, [search]);
