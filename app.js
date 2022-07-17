@@ -30,9 +30,6 @@ app.use("/api/v1/users", userHandler);
 app.use("/api/v1/blogs", blogHandler);
 app.use("/api/v1/comments", commentHandler);
 
-app.get("/", (req, res) => {
-  res.send("server is online");
-});
 
 // --------------------------deployment------------------------------
 
