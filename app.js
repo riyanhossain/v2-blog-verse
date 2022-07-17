@@ -9,6 +9,7 @@ const dbConnection = require("./db/dbconnect");
 const userHandler = require("./routes/user");
 const blogHandler = require("./routes/blog");
 const commentHandler = require("./routes/comment");
+const path = require("path");
 
 const app = express();
 
