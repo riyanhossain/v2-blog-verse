@@ -12,7 +12,7 @@ export default function UpdateBlog() {
       });
     const [preview, setPreview] = useState(form.coverImage);
     const fetchBlog =  useCallback(async () => {
-      const res = await axios.get(`http://localhost:5000/api/v1/blogs/blog/${id}`);
+      const res = await axios.get(`/api/v1/blogs/blog/${id}`);
       delete res.data.blog.user;
       setForm(res.data.blog);
       setPreview(res.data.blog.coverImage);
@@ -56,7 +56,7 @@ export default function UpdateBlog() {
       e.preventDefault();
       console.log(form);
       try{
-        const res = await axios.patch(`http://localhost:5000/api/v1/blogs/update-blog/${id}`, form, {
+        const res = await axios.patch(`/api/v1/blogs/update-blog/${id}`, form, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type" : "multipart/form-data",

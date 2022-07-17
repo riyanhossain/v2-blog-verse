@@ -14,7 +14,7 @@ export default function Register() {
   const userRegister = async (e) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/v1/users/register",
+        "/api/v1/users/register",
         inputs
       );
       if (res.data.message) {

@@ -42,7 +42,7 @@ export default function CreateBlogForm() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try{
-      const res = await axios.post("http://localhost:5000/api/v1/blogs/create-blog", form, {
+      const res = await axios.post("/api/v1/blogs/create-blog", form, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type" : "multipart/form-data",

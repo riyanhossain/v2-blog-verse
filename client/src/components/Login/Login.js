@@ -13,7 +13,7 @@ export default function Login() {
   const setUser = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/v1/users/login",
+        "/api/v1/users/login",
         inputs
       );
       if (res.data.user) {

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function RandomBlogList() {
   const [blogs, setBlogs] = useState([]);
   const fetchBlogs = async () => {
-    const res = await axios.get("http://localhost:5000/api/v1/blogs/get-blogs");
+    const res = await axios.get("/api/v1/blogs/get-blogs");
     setBlogs(res.data.blogs);
   };
   useEffect(() => {

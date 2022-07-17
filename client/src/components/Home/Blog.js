@@ -6,7 +6,6 @@ import UpdateButton from "../MyBlogs/UpdateButton";
 export default function Blog(props) {
   const { blog, myblogs, token } = props;
   const { _id, title, category, createdAt, coverImage, readTime, user } = blog;
-  console.log(myblogs);
   return (
     <div className="w-[40rem] h-[30rem] bg-white flex flex-col justify-center items-center relative shadow-lg">
       <div className="h-2/3 w-full flex justify-center items-center">

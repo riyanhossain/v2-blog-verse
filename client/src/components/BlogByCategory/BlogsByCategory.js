@@ -8,7 +8,7 @@ export default function BlogsByCategory() {
         const { category } = useParams();
         const fetchBlogByCategory = useCallback(
           async () => {
-            const res = await axios.get(`http://localhost:5000/api/v1/blogs/category/${category}`);
+            const res = await axios.get(`/api/v1/blogs/category/${category}`);
             setBlogList(res.data.blogs);
           },[category]
         )

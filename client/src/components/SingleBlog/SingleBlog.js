@@ -7,7 +7,7 @@ export default function SingleBlog() {
   const { id } = useParams();
   const [blog, setBlog] = useState({});
   const fetchBlog =  useCallback(async () => {
-    const res = await axios.get(`http://localhost:5000/api/v1/blogs/blog/${id}`);
+    const res = await axios.get(`/api/v1/blogs/blog/${id}`);
     setBlog(res.data.blog);
   },[id]);
   useEffect(() => {

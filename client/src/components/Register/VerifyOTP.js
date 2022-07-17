@@ -13,7 +13,7 @@ export default function VerifyOTP() {
     const handleSubmit = async(e) => {
         e.preventDefault();
         try{
-            await axios.post(`http://localhost:5000/api/v1/users/verify-otp`, {otp, emaill});
+            await axios.post(`/api/v1/users/verify-otp`, {otp, emaill});
             message.success('OTP verified successfully');
             navigate(`/login`);
         }catch(err){
