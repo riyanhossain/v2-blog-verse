@@ -14,7 +14,7 @@ export default function Register() {
   const userRegister = async (e) => {
     try {
       const res = await axios.post(
-        "/api/v1/users/register",
+        "https://new-blog-verse.herokuapp.com/api/v1/users/register",
         inputs
       );
       if (res.data.message) {

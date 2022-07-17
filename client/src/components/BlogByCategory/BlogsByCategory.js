@@ -8,7 +8,7 @@ export default function BlogsByCategory() {
         const { category } = useParams();
         const fetchBlogByCategory = useCallback(
           async () => {
-            const res = await axios.get(`/api/v1/blogs/category/${category}`);
+            const res = await axios.get(`https://new-blog-verse.herokuapp.com/api/v1/blogs/category/${category}`);
             setBlogList(res.data.blogs);
           },[category]
         )

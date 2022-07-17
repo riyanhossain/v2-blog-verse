@@ -13,7 +13,7 @@ export default function Login() {
   const setUser = async () => {
     try {
       const res = await axios.post(
-        "/api/v1/users/login",
+        "https://new-blog-verse.herokuapp.com/api/v1/users/login",
         inputs
       );
       if (res.data.user) {

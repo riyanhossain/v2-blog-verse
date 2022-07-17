@@ -7,7 +7,7 @@ export default function DeleteButton(props) {
     const deleteBlog = async() => {
       console.log(id);
       try{
-        await axios.delete(`/api/v1/blogs/delete-blog/${id}`, {
+        await axios.delete(`https://new-blog-verse.herokuapp.com/api/v1/blogs/delete-blog/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }
